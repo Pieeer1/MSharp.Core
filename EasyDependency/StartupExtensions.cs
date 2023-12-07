@@ -4,6 +4,11 @@ using System.Reflection;
 namespace EasyDependency;
 public static class StartupExtensions
 {
+    /// <summary>
+    /// Automatically Adds Dependencies to the Service Collection
+    /// </summary>
+    /// <param name="serviceCollection">Service Collection to Add Dependencies to.</param>
+    /// <exception cref="NullReferenceException"></exception>
     public static void AddEasyDependencies(this IServiceCollection serviceCollection)
     {
         MethodBase? mainMethodBase = (new System.Diagnostics.StackTrace()).GetFrame(1)?.GetMethod();
