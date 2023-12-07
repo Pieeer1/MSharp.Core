@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
       <PackageId>EasyDependency</PackageId>
-      <Version>0.1.0</Version>
+      <Version>0.1.1</Version>
       <Authors>Mason Adams</Authors>
       <Company>Mason Adams</Company>
       <PackageDescription>Dependency Injection using Attributes. It's that Easy</PackageDescription>
