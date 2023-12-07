@@ -16,9 +16,6 @@ jobs:
 
     steps:
 
-    - name: GitTools
-      uses: GitTools/actions@v0.10.2
-            
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
       with:
