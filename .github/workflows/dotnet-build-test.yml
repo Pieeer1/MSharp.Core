@@ -46,4 +46,4 @@ jobs:
     - name: Push generated package to GitHub registry
       run: |
           dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --name github --username ${{ github.repository_owner }} --password ${{ github.token }}
-          dotnet nuget push ./package/*.nupkg  --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json  --api-key ${{ secrets.NUGET_API_KEY }}
+          dotnet nuget push **/*.nupkg --source github  --api-key ${{ secrets.NUGET_API_KEY }}
