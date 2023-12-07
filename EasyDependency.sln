@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0479AF4F-5CDC-4689-9D94-87F9C975565E}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-build-test.yml = .github\workflows\dotnet-build-test.yml
+		VersionConfig.yml = VersionConfig.yml
 	EndProjectSection
 EndProject
 Global

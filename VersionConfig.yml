@@ -15,7 +15,7 @@ commits-since-version-source-padding: 4
 commit-message-incrementing: Enabled
 merge-message-formats: {}
 branches:
-  main:
+  master:
     regex: ^master$|^main$
     mode: ContinuousDelivery
     tag: ''
