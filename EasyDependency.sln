@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDependency", "EasyDepen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDependency.Tests", "EasyDependency.Tests\EasyDependency.Tests.csproj", "{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0479AF4F-5CDC-4689-9D94-87F9C975565E}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-build-test.yml = .github\workflows\dotnet-build-test.yml
+		.github\gitversion.yml = .github\gitversion.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
