@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-      <PackageId>Easy Dependency</PackageId>
+      <PackageId>EasyDependency</PackageId>
       <Version>0.1.0</Version>
       <Authors>Mason Adams</Authors>
       <Company>Mason Adams</Company>
