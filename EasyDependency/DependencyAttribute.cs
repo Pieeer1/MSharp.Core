@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace EasyDependency;
-[AttributeUsage(AttributeTargets.Interface)]
+[AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class)]
 public class EasyDependencyAttribute : Attribute
 {
     public EasyDependencyAttribute(ServiceLifetime serviceLifetime)

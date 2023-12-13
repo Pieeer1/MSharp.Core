@@ -11,7 +11,7 @@ public class StartupExtensionTests
 
         serviceCollection.AddEasyDependencies();
 
-        Assert.Equal(3, serviceCollection.Count);
+        Assert.Equal(4, serviceCollection.Count);
 
         Assert.Equal("TestTransientInterface", serviceCollection.ElementAt(0).ServiceType.Name);
         Assert.Equal("TestTransientClass", serviceCollection.ElementAt(0).ImplementationType?.Name);
@@ -23,6 +23,8 @@ public class StartupExtensionTests
         Assert.Equal("TestSingletonClass", serviceCollection.ElementAt(2).ImplementationType?.Name);
         Assert.Equal(ServiceLifetime.Singleton, serviceCollection.ElementAt(2).Lifetime);
 
+        Assert.Equal("TestScopedClassRawDependency", serviceCollection.ElementAt(3).ServiceType.Name);
+        Assert.Equal(ServiceLifetime.Scoped, serviceCollection.ElementAt(3).Lifetime);
 
     }
 }
