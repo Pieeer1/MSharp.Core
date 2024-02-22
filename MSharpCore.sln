@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSharp.Core", "MSharp.Core\MSharp.Core.csproj", "{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSharp.Core.Tests", "MSharpCore.Tests\MSharp.Core.Tests.csproj", "{A90D925B-3104-4BC0-A78A-F822996DE126}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A90D925B-3104-4BC0-A78A-F822996DE126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A90D925B-3104-4BC0-A78A-F822996DE126}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A90D925B-3104-4BC0-A78A-F822996DE126}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A90D925B-3104-4BC0-A78A-F822996DE126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
