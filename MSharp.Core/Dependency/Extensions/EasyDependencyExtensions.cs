@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using MSharp.Core.Linq;
-namespace EasyDependency.Extensions;
+namespace MSharp.Core.Dependency.Extensions;
 internal static class TypeLoaderExtensions
 {
     public static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)

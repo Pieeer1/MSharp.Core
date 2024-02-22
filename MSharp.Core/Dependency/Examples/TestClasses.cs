@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace EasyDependency.Examples;
+namespace MSharp.Core.Dependency.Examples;
 internal class TestTransientClass : TestTransientInterface
 {
     internal TestTransientClass()
     {
     }
 }
-[EasyDependency(ServiceLifetime.Transient)]
+[Dependency(ServiceLifetime.Transient)]
 internal interface TestTransientInterface
 {
 }
@@ -17,7 +17,7 @@ internal class TestScopedClass : TestScopedInterface
     {
     }
 }
-[EasyDependency(ServiceLifetime.Scoped)]
+[Dependency(ServiceLifetime.Scoped)]
 internal interface TestScopedInterface
 {
 }
@@ -27,11 +27,11 @@ internal class TestSingletonClass : TestSingletonInterface
     {
     }
 }
-[EasyDependency(ServiceLifetime.Singleton)]
+[Dependency(ServiceLifetime.Singleton)]
 internal interface TestSingletonInterface
 {
 }
-[EasyDependency(ServiceLifetime.Scoped)]
+[Dependency(ServiceLifetime.Scoped)]
 internal class TestScopedClassRawDependency
 { 
 

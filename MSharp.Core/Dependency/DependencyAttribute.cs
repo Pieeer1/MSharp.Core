@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace EasyDependency;
+namespace MSharp.Core.Dependency;
 [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class)]
-public class EasyDependencyAttribute : Attribute
+public class DependencyAttribute : Attribute
 {
-    public EasyDependencyAttribute(ServiceLifetime serviceLifetime)
+    public DependencyAttribute(ServiceLifetime serviceLifetime)
     {
         ServiceLifetime = serviceLifetime;
     }

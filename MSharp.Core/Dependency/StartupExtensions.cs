@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace EasyDependency;
+namespace MSharp.Core.Dependency;
 public static class StartupExtensions
 {
     /// <summary>
@@ -9,7 +9,7 @@ public static class StartupExtensions
     /// </summary>
     /// <param name="serviceCollection">Service Collection to Add Dependencies to.</param>
     /// <exception cref="NullReferenceException"></exception>
-    public static void AddEasyDependencies(this IServiceCollection serviceCollection)
+    public static void AddDependencies(this IServiceCollection serviceCollection)
     {
         MethodBase? mainMethodBase = (new System.Diagnostics.StackTrace()).GetFrame(1)?.GetMethod();
         string @namespace = ParseNamespace(mainMethodBase?.DeclaringType?.Namespace ?? throw new NullReferenceException("Cannot get Startup Method"));
@@ -32,15 +32,15 @@ public static class StartupExtensions
             foreach (Type type in types)
             {
                 IEnumerable<Type> interfaces = type.GetInterfaces()
-                    .Where(x => x.GetCustomAttribute<EasyDependencyAttribute>() is not null)
+                    .Where(x => x.GetCustomAttribute<DependencyAttribute>() is not null)
                     .Where(x => !x.GetTypeInfo().IsGenericTypeDefinition);
-                if (type.GetCustomAttribute<EasyDependencyAttribute>() is not null && !type.IsInterface)
+                if (type.GetCustomAttribute<DependencyAttribute>() is not null && !type.IsInterface)
                 {
-                    AddServiceLevel(serviceCollection, type.GetCustomAttribute<EasyDependencyAttribute>()!.ServiceLifetime, null, type);
+                    AddServiceLevel(serviceCollection, type.GetCustomAttribute<DependencyAttribute>()!.ServiceLifetime, null, type);
                 }
                 foreach (Type @interface in interfaces)
                 {
-                    AddServiceLevel(serviceCollection, @interface.GetCustomAttribute<EasyDependencyAttribute>()!.ServiceLifetime, @interface, type);
+                    AddServiceLevel(serviceCollection, @interface.GetCustomAttribute<DependencyAttribute>()!.ServiceLifetime, @interface, type);
                 }
             }
         }
