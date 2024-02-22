@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSharp.Core.Tests", "EasyDependency.Tests\MSharp.Core.Tests.csproj", "{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0479AF4F-5CDC-4689-9D94-87F9C975565E}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-build-test.yml = .github\workflows\dotnet-build-test.yml
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
