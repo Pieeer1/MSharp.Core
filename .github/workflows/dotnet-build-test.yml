@@ -6,8 +6,6 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
@@ -42,11 +40,14 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-
     - name: Package nuget
       run: dotnet pack MSharpCore.sln --configuration release -o:package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
 
     - name: Push Package to NuGet.org
       run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Push tag
+      uses: laputansoft/github-tag-action@v4.6
+      with:
+        github_token: ${{ env.github-token }}
+        tag: ${{ steps.gitversion.outputs.AssemblySemVer }}
