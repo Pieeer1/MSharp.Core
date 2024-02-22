@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		VersionConfig.yml = VersionConfig.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSharp.Core", "MSharp.Core\MSharp.Core.csproj", "{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC15DC8-90D8-41FA-BE9A-3E291F945B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5775E2-C7A6-4938-B8F5-5565E6DD39F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
