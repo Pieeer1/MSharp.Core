@@ -31,3 +31,8 @@ internal class TestSingletonClass : TestSingletonInterface
 internal interface TestSingletonInterface
 {
 }
+[EasyDependency(ServiceLifetime.Scoped)]
+internal class TestScopedClassRawDependency
+{ 
+
+}

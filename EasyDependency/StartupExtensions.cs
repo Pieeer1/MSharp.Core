@@ -34,22 +34,51 @@ public static class StartupExtensions
                 IEnumerable<Type> interfaces = type.GetInterfaces()
                     .Where(x => x.GetCustomAttribute<EasyDependencyAttribute>() is not null)
                     .Where(x => !x.GetTypeInfo().IsGenericTypeDefinition);
+                if (type.GetCustomAttribute<EasyDependencyAttribute>() is not null && !type.IsInterface)
+                {
+                    AddServiceLevel(serviceCollection, type.GetCustomAttribute<EasyDependencyAttribute>()!.ServiceLifetime, null, type);
+                }
                 foreach (Type @interface in interfaces)
                 {
-                    switch (@interface.GetCustomAttribute<EasyDependencyAttribute>()?.ServiceLifetime)
-                    {
-                        case ServiceLifetime.Transient:
-                            serviceCollection.AddTransient(@interface, type);
-                            break;
-                        case ServiceLifetime.Scoped:
-                            serviceCollection.AddScoped(@interface, type);
-                            break;
-                        case ServiceLifetime.Singleton:
-                            serviceCollection.AddSingleton(@interface, type);
-                            break;
-                    }
+                    AddServiceLevel(serviceCollection, @interface.GetCustomAttribute<EasyDependencyAttribute>()!.ServiceLifetime, @interface, type);
                 }
             }
+        }
+    }
+    private static void AddServiceLevel(IServiceCollection serviceCollection, ServiceLifetime serviceLifetime, Type? @interface, Type reference)
+    {
+        switch (serviceLifetime)
+        {
+            case ServiceLifetime.Transient:
+                if (@interface is not null)
+                {
+                    serviceCollection.AddTransient(@interface, reference);
+                }
+                else
+                { 
+                    serviceCollection.AddTransient(reference);
+                }
+                break;
+            case ServiceLifetime.Scoped:
+                if (@interface is not null)
+                {
+                    serviceCollection.AddScoped(@interface, reference);
+                }
+                else
+                {
+                    serviceCollection.AddScoped(reference);
+                }
+                break;
+            case ServiceLifetime.Singleton:
+                if (@interface is not null)
+                {
+                    serviceCollection.AddSingleton(@interface, reference);
+                }
+                else
+                {
+                    serviceCollection.AddSingleton(reference);
+                }
+                break;
         }
     }
 
