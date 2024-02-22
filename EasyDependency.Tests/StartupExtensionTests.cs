@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EasyDependency.Tests;
+namespace MSharp.Core.Dependency.Tests;
 
 public class StartupExtensionTests
 {
@@ -9,7 +9,7 @@ public class StartupExtensionTests
     {
         IServiceCollection serviceCollection = new ServiceCollection();
 
-        serviceCollection.AddEasyDependencies();
+        serviceCollection.AddDependencies();
 
         Assert.Equal(4, serviceCollection.Count);
 
