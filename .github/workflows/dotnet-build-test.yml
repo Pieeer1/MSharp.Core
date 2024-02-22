@@ -6,8 +6,6 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
@@ -47,3 +45,9 @@ jobs:
 
     - name: Push Package to NuGet.org
       run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Push tag
+      uses: laputansoft/github-tag-action@v4.6
+      with:
+        github_token: ${{ env.github-token }}
+        tag: ${{ steps.gitversion.outputs.AssemblySemVer }}
