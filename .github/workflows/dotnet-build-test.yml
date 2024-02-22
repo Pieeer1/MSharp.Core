@@ -45,3 +45,4 @@ jobs:
 
     - name: Push Package to NuGet.org
       run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
