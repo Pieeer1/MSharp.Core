@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-
+using MSharp.Core.Linq;
 namespace EasyDependency.Extensions;
 internal static class TypeLoaderExtensions
 {
@@ -13,29 +13,6 @@ internal static class TypeLoaderExtensions
         catch (ReflectionTypeLoadException e)
         {
             return e.Types.Where(t => t != null).ToNonNullableInside();
-        }
-    }
-}
-internal static class EasyDependencyExtensions
-{
-    public static IEnumerable<T> ToNonNullableInside<T>(this IEnumerable<T?> obj) where T : class
-    {
-        foreach (var o in obj)
-        {
-            if (o is not null)
-            {
-                yield return o;
-            }
-        }
-    }
-    public static IEnumerable<T> ToNonNullableInside<T>(this IEnumerable<T?> obj) where T : struct
-    {
-        foreach (var o in obj)
-        {
-            if (o is not null)
-            {
-                yield return (T)o;
-            }
         }
     }
 }
