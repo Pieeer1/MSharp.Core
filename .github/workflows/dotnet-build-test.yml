@@ -1,19 +1,17 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+name: .NET Build Test and Deploy
 
-name: .NET
+concurrency: MSharpCore
 
 on:
   push:
     branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
       with:
@@ -24,7 +22,7 @@ jobs:
           fetch-depth: 0
   
     - name: Determine Version
-      id:   gitversion # id to later be referenced
+      id:   gitversion 
       uses: gittools/actions/gitversion/execute@v0 
       with:
           useConfigFile: true
@@ -40,9 +38,28 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
 
+    - name: Test
+      run: dotnet test --no-build --configuration Release --verbosity normal
+
     - name: Package nuget
       run: dotnet pack MSharpCore.sln --configuration release -o:package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
 
-    - name: Push Package to NuGet.org
-      run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MSharpCore
+        path: package
 
+  push-to-nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: MSharpCore
+          path: package
+
+      - name: Push Package to NuGet.org
+        run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
