@@ -4,7 +4,7 @@ concurrency: MSharpCore
 
 on:
   push:
-    branches: [ "RepositoryLayer" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
