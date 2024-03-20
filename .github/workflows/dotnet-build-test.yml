@@ -7,6 +7,16 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      pushToNuget:
+        description: 'Push to Nuget'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false' 
 
 jobs:
   build:
@@ -63,3 +73,27 @@ jobs:
 
       - name: Push Package to NuGet.org
         run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: "Add Git Tag"
+        run: | 
+          git config --global user.email ""
+          git config --global user.name ""
+          git tag -a ${{ steps.gitversion.outputs.FullSemVer }} -m "Release ${{ steps.gitversion.outputs.FullSemVer }}"
+          git push origin ${{ steps.gitversion.outputs.FullSemVer }}
+
+  push-pre-release-to-nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    if:  ${{ inputs.pushToNuget == 'true' }}
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: MSharpCore
+          path: package
+
+      - name: Push Package to NuGet.org
+        run: dotnet nuget push ./package/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate --prerelease
