@@ -60,6 +60,9 @@ jobs:
         name: MSharpCore
         path: package
 
+    outputs:
+      version: ${{ steps.gitversion.outputs.FullSemVer }}
+
   push-to-nuget:
     runs-on: ubuntu-latest
     needs: build
@@ -81,8 +84,8 @@ jobs:
         run: | 
           git config --global user.email ""
           git config --global user.name ""
-          git tag -a ${{ steps.gitversion.outputs.FullSemVer }} -m "Release ${{ steps.gitversion.outputs.FullSemVer }}"
-          git push origin ${{ steps.gitversion.outputs.FullSemVer }}
+          git tag -a ${{ steps.needs.build.version }} -m "Release ${{ steps.needs.build.version }}"
+          git push origin ${{ steps.needs.build.version }}
 
   push-pre-release-to-nuget:
     runs-on: ubuntu-latest
