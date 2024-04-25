@@ -49,7 +49,17 @@ public static class OptionsExtensions
                     configuratonSection[secretProperty.Name] = secretValue.Value;
                 }
             }
-            serviceCollection.AddSingleton(optionType, options);
+
+            MethodInfo configureInfo = typeof(OptionsServiceCollectionExtensions).GetMethods().First(x => x.Name == nameof(OptionsServiceCollectionExtensions.Configure) && x.GetParameters().Length == 2)
+                ?? throw new NullReferenceException("Options Service Collection Extensions does not have a Configure Method");
+
+            configureInfo = configureInfo.MakeGenericMethod(optionType);
+
+            Action<object> objectAction = configuratonSection.Bind;
+
+            object?[]? objs = [serviceCollection, objectAction];
+
+            configureInfo.Invoke(null, objs);
         }
     }
 }
